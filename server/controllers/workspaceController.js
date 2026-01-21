@@ -61,3 +61,15 @@ exports.joinWorkspace = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+// Add this to your controller
+exports.getUserWorkspaces = async (req, res) => {
+  try {
+    const user = await User.findByPk(req.user.id, {
+      include: Workspace,
+    });
+    res.json(user.Workspaces);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
