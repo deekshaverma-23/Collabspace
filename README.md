@@ -30,7 +30,3 @@
 3. **Install Frontend dependencies**: `cd client && npm install`
 4. **Set up Environment Variables**: Create a `.env` file with your `DB_URL`, `JWT_SECRET`, and `PORT`.
 5. **Run the application**: Use `npm run dev` in both folders.
-
----
-
-**Would you like me to help you write the specific "Contribution Guidelines" or "License" section to make this repository look even more professional?**
