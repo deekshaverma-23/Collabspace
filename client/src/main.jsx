@@ -7,7 +7,7 @@ import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Provider store={store}> {/* This is the key change */}
+    <Provider store={store}> 
       <App />
     </Provider>
   </React.StrictMode>

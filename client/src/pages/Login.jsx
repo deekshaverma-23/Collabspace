@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setCredentials } from '../redux/authSlice'; // Use the correct path to your new slice
+import { setCredentials } from '../redux/authSlice'; 
 import API from '../api/axios';
 
 const Login = () => {
@@ -13,9 +13,8 @@ const handleSubmit = async (e) => {
   e.preventDefault();
   try {
     const response = await API.post('/auth/login', formData);
-    console.log("Full Server Response:", response.data); // Look at this in F12 Console
+    console.log("Full Server Response:", response.data); 
 
-    // If your server returns { token, user: { id, username } }
     dispatch(setCredentials({ 
       user: response.data.user, 
       token: response.data.token 
