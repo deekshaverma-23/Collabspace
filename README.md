@@ -29,4 +29,4 @@
 2. **Install Backend dependencies**: `cd server && npm install`
 3. **Install Frontend dependencies**: `cd client && npm install`
 4. **Set up Environment Variables**: Create a `.env` file with your `DB_URL`, `JWT_SECRET`, and `PORT`.
-5. **Run the application**: Cd to client folder and use command `npm run dev`. Similarly use `npx nodemon server.js` in the server folder.
+5. **Run the application**: Cd to client folder and use command `npm run dev`. Similarly use `node server.js` in the server folder.
