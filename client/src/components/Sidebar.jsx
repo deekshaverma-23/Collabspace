@@ -1,6 +1,6 @@
 import { LayoutDashboard, MessageSquare, Kanban, BarChart2, LogOut } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout } from "../features/authSlice";
+import { logout } from "../redux/authSlice";
 import { useNavigate } from 'react-router-dom';
 
 const Sidebar = ({ setActiveView, activeView }) => {
