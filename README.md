@@ -1,4 +1,4 @@
-# CollabSpace | Real-Time Agile Management Suite
+# CollabSpace | Real-Time Management Suite
 
 **CollabSpace** is a high-performance, full-stack project management platform designed for real-time team collaboration. It features a dynamic Kanban board, instant messaging, and data-driven analytics to streamline workspace productivity.
 
