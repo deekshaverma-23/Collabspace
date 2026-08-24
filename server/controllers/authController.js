@@ -2,15 +2,12 @@ const { User } = require("../models");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
-// Register a new user
 exports.register = async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
-    // The password hashing is handled by the 'beforeCreate' hook in our User model
     const user = await User.create({ username, email, password });
 
-    // Create a JWT token
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
       expiresIn: "1d",
     });
@@ -24,7 +21,6 @@ exports.register = async (req, res) => {
   }
 };
 
-// Login user
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;

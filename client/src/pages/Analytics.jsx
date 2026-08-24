@@ -10,12 +10,11 @@ const Analytics = ({ workspaceId }) => {
       try {
         const { data: tasks } = await API.get(`/tasks/${workspaceId}`);
         
-        // Format data specifically for the Doughnut Chart
         const chartData = [
           { name: 'To Do', value: tasks.filter(t => t.status === 'To Do').length, color: '#3B82F6' },
           { name: 'In Progress', value: tasks.filter(t => t.status === 'In Progress').length, color: '#EAB308' },
           { name: 'Done', value: tasks.filter(t => t.status === 'Done').length, color: '#22C55E' },
-        ].filter(item => item.value > 0); // Only show statuses that have tasks
+        ].filter(item => item.value > 0); 
 
         setData(chartData);
       } catch (err) {
@@ -37,7 +36,7 @@ const Analytics = ({ workspaceId }) => {
                 data={data}
                 cx="50%"
                 cy="50%"
-                innerRadius={80} // This creates the "Doughnut" hole
+                innerRadius={80} 
                 outerRadius={120}
                 paddingAngle={5}
                 dataKey="value"

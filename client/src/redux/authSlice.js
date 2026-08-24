@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const authSlice = createSlice({
   name: "auth",
   initialState: {
-    // Check localStorage so user stays logged in on refresh
     user: localStorage.getItem("user")
       ? JSON.parse(localStorage.getItem("user"))
       : null,
@@ -11,12 +10,10 @@ const authSlice = createSlice({
   },
   reducers: {
     setCredentials: (state, action) => {
-      // Deconstruct user and token from the payload
       const { user, token } = action.payload;
       state.user = user;
       state.token = token;
 
-      // Save to localStorage for persistence
       localStorage.setItem("user", JSON.stringify(user));
       localStorage.setItem("token", token);
     },

@@ -16,7 +16,6 @@ const KanbanBoard = ({ workspaceId }) => {
       try {
         const { data } = await API.get(`/tasks/${workspaceId}`);
         
-        // Map backend tasks into their respective columns based on status
         const newColumns = {
           'To Do': { name: 'To Do', items: data.filter(t => t.status === 'To Do') },
           'In Progress': { name: 'In Progress', items: data.filter(t => t.status === 'In Progress') },
@@ -43,7 +42,6 @@ const KanbanBoard = ({ workspaceId }) => {
       const destItems = [...destCol.items];
       const [removed] = sourceItems.splice(source.index, 1);
       
-      // Update local state
       removed.status = destination.droppableId;
       destItems.splice(destination.index, 0, removed);
 
@@ -53,7 +51,6 @@ const KanbanBoard = ({ workspaceId }) => {
         [destination.droppableId]: { ...destCol, items: destItems },
       });
 
-      // Update backend status - Ensure your backend route matches this path
       try {
         await API.patch(`/tasks/${removed.id}`, { status: destination.droppableId });
       } catch (err) {
@@ -75,7 +72,6 @@ const KanbanBoard = ({ workspaceId }) => {
       };
       const { data } = await API.post('/tasks', newTask);
       
-      // Update columns state to show the new task in 'To Do'
       setColumns({
         ...columns,
         'To Do': {

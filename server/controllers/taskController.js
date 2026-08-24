@@ -1,9 +1,8 @@
-const { Task } = require("../models"); // Destructuring requires Task to be in module.exports
+const { Task } = require("../models");
 
 exports.getTasks = async (req, res) => {
   try {
     const { workspaceId } = req.params;
-    // If Task was exported correctly above, this line will now work
     const tasks = await Task.findAll({
       where: { workspaceId },
     });
@@ -13,7 +12,7 @@ exports.getTasks = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
-// Create a new task
+
 exports.createTask = async (req, res) => {
   try {
     const { title, description, status, workspaceId } = req.body;
@@ -29,7 +28,6 @@ exports.createTask = async (req, res) => {
   }
 };
 
-// Update task (for drag-and-drop or edits)
 exports.updateTask = async (req, res) => {
   try {
     const { id } = req.params;

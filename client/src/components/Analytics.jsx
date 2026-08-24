@@ -4,7 +4,6 @@ import { Doughnut } from 'react-chartjs-2';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Analytics = ({ tasks }) => {
-  // Count tasks by status
   const dataCounts = {
     todo: tasks.filter(t => t.status === 'todo').length,
     'in-progress': tasks.filter(t => t.status === 'in-progress').length,

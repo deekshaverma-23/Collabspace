@@ -1,22 +1,19 @@
 const { Workspace, User, WorkspaceMember } = require("../models");
 const crypto = require("crypto");
 
-// Create a new Workspace
 exports.createWorkspace = async (req, res) => {
   try {
     const { name, description } = req.body;
 
-    // Generate a unique 6-character invite code
     const inviteCode = crypto.randomBytes(3).toString("hex").toUpperCase();
 
     const workspace = await Workspace.create({
       name,
       description,
       inviteCode,
-      ownerId: req.user.id, // This comes from the Auth Middleware we'll write next
+      ownerId: req.user.id,
     });
 
-    // Add the creator as an 'Admin' member automatically
     await WorkspaceMember.create({
       UserId: req.user.id,
       WorkspaceId: workspace.id,
@@ -29,7 +26,6 @@ exports.createWorkspace = async (req, res) => {
   }
 };
 
-// Join Workspace via Invite Code
 exports.joinWorkspace = async (req, res) => {
   try {
     const { inviteCode } = req.body;
@@ -39,7 +35,6 @@ exports.joinWorkspace = async (req, res) => {
       return res.status(404).json({ message: "Invalid invite code" });
     }
 
-    // Check if user is already a member
     const existingMember = await WorkspaceMember.findOne({
       where: { UserId: req.user.id, WorkspaceId: workspace.id },
     });
@@ -64,7 +59,6 @@ exports.joinWorkspace = async (req, res) => {
 
 exports.getUserWorkspaces = async (req, res) => {
   try {
-    // We find the user and include their associated workspaces
     const user = await User.findByPk(req.user.id, {
       include: Workspace,
     });

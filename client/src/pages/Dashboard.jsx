@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import API from '../api/axios';
 import Sidebar from '../components/Sidebar';
 import KanbanBoard from '../components/KanbanBoard';
-import Chat from '../components/chat'; // Fixed capitalization
-import Analytics from './Analytics'; // Kept the pages folder version
+import Chat from '../components/chat'; 
+import Analytics from './Analytics';
 import WorkspaceModal from '../components/WorkspaceModal';
 import { Plus, Copy, Check } from 'lucide-react';
 

@@ -14,8 +14,8 @@ const WorkspaceModal = ({ isOpen, onClose, onRefresh }) => {
       } else {
         await API.post('/workspaces/join', { inviteCode });
       }
-      onRefresh(); // Refresh the list of workspaces
-      onClose(); // Close modal
+      onRefresh(); 
+      onClose(); 
     } catch (err) {
       alert(err.response?.data?.message || 'Action failed');
     }

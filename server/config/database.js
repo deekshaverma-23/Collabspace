@@ -7,7 +7,7 @@ const sequelize = new Sequelize(
   process.env.DB_PASS,
   {
     host: process.env.DB_HOST || "localhost",
-    port: 5434, // <--- Try 5432 first. If it fails, try 5433.
+    port: 5434,
     dialect: "postgres",
     logging: false,
   },

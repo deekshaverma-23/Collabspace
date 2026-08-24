@@ -24,21 +24,20 @@ const Chat = ({ workspaceId }) => {
 const sendMessage = (e) => {
   e.preventDefault();
   
-  // Safety check: Don't send if user isn't loaded or message is empty
   if (!user || !user.username) {
     return alert("Please wait for user profile to load.");
   }
   if (!message.trim()) return; 
 
   const messageData = { 
-    text: message,         // FIXED: Changed from newMessage to message
+    text: message,        
     sender: user.username, 
     workspaceId: workspaceId,
     time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) 
   };
   
   socket.emit('send_message', messageData);
-  setMessage("");         // FIXED: Changed from setNewMessage to setMessage
+  setMessage(""); 
 };
 
   return (
