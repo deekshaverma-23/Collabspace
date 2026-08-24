@@ -13,12 +13,10 @@ const taskRoutes = require("./routes/taskRoutes");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
-// Socket.io Setup
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
@@ -33,12 +31,10 @@ io.on("connection", (socket) => {
   });
 
   socket.on("send_message", (data) => {
-    // This broadcasts the message to the specific workspace room
     io.to(data.workspaceId).emit("receive_message", data);
   });
 });
 
-// API Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/workspaces", workspaceRoutes);
 app.use("/api/tasks", taskRoutes);
@@ -49,7 +45,6 @@ sequelize
   .sync({ alter: true })
   .then(() => {
     console.log("Database synced successfully");
-    // This MUST be server.listen, and it MUST be inside this .then block
     server.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });

@@ -1,6 +1,6 @@
 const User = require("./User");
 const Workspace = require("./Workspace");
-const Task = require("./Task"); // 1. IMPORT THE TASK MODEL
+const Task = require("./Task");
 const sequelize = require("../config/database");
 const { DataTypes } = require("sequelize");
 
